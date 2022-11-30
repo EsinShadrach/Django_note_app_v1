@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title has-text-danger" id="modalTitleId">Delete</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body has-text-danger">
+							Are you sure you want to delete {{detailed.name | truncatechars:"5"}}?
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<form action="" method="post">
+							{% csrf_token %}
+								<button type="submit" class="button is-danger">Delete</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+	<script>
+		var modalId = document.getElementById('modalId');
+
+		modalId.addEventListener('show.bs.modal', function (event) {
+				// Button that triggered the modal
+				let button = event.relatedTarget;
+				// Extract info from data-bs-* attributes
+				let recipient = button.getAttribute('data-bs-whatever');
+
+			// Use above variables to manipulate the DOM
+		});
+	</script>
+	<h1 class="has-text-primary delete-item mb-4 mt-3 bg-nprimary">
+		<span>{{detailed.name | truncatechars:"20"}}</span>
+		<a class="bi-trash-fill has-text-danger" data-bs-toggle="modal" data-bs-target="#modalId"></a>
+	</h1>
+	<div class="tag-row mb-3">
+		<span class="tag is-warning is-medium">
+			<span class="me-1">{{detailed.tag.tag1}}</span>
+			<button class="delete is-small"></button>
+		</span>
+		<span class="tag is-danger is-medium">
+			<span class="me-1">{{detailed.tag.tag2}}</span>
+			<button class="delete is-small"></button>
+		</span>
+		<span class="tag is-success is-medium">
+			<span class="me-1">{{detailed.tag.tag3}}</span>
+			<button class="delete is-small"></button>
+		</span>
+	</div>
+	<div class="message is-primary shadow-lg">
+		<div class="message-body label">
+			{{detailed.note}}
+		</div>
+	</div>
+	
+{% endblock content %}

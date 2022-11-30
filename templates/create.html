@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+	<form action="" method="POST" class="my-3">
+		{% if error %}
+			<div class="error-message label has-background-danger py-1 px-2 rounded text-white" style="width: fit-content;">{{error_message}} 👀</div>
+		{% endif %}
+		{% csrf_token %}
+		<div class="field">
+			{% if error and error_1 %}
+				<label class="label has-text-danger">*Name</label>
+				<p class="control">
+				<input class="input is-danger label has-text-primary" type="text" placeholder="Name" name="note_name">
+				</p>
+			{% else %}
+				<label class="label has-text-primary">*Name</label>
+				<p class="control">
+				<input class="input is-primary label has-text-primary" type="text" placeholder="Name" name="note_name">
+				</p>
+			{% endif %}
+		</div>
+		<div class="field is-grouped">
+			<p class="control is-expanded">
+				<label for="" class="label has-text-link">Tag-1</label>
+				<input class="input is-warning has-text-primary label" type="text" placeholder="Tag 1" name="tag1">
+			</p>
+			<p class="control is-expanded">
+				<label for="" class="label has-text-link label">Tag-2</label>
+				<input class="input is-primary has-text-primary label" type="text" placeholder="Tag 1" name="tag2">
+			</p>
+			<p class="control is-expanded">
+				<label for="" class="label has-text-link">Tag-3</label>
+				<input class="input is-link has-text-primary label" type="text" placeholder="Tag 3" name="tag3">
+			</p>
+		</div>
+		<div class="control mb-4">
+			{% if error and error_1 == False %}
+				<label for="" class="label has-text-danger">*Write a note</label>
+				<textarea class="textarea has-text-primary label is-danger has-fixed-size" rows="10" placeholder="Write Note.." name="note_content"></textarea>
+			{% else %}
+			<label for="" class="label has-text-primary">*Write a note</label>
+			<textarea class="textarea has-text-primary label is-primary has-fixed-size" rows="10" placeholder="Write Note.." name="note_content"></textarea>
+			{% endif %}
+		</div>
+		<button class="button w-100 is-primary" type="submit">Submit</button>
+	</form>
+	<a href="{% url 'home' %}" class="control col-md-4">
+		<button class="button w-100 is-link">Cancel</button>
+	</a>
+{% endblock content %}

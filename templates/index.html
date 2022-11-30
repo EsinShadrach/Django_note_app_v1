@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="row mt-3">
+		{% for note in notes %}
+			<div class="col-md-4">
+				<a href="{% url 'detailed' note.unique_identity %}">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-body-head">
+								<h3 class="card-title">{{note.name | truncatechars:"11"}}</h3>
+								<div class="for-icons">
+									<!-- <a href="#" class="has-background-primary-light p-2 circular"> -->
+										<i class="bi-pencil-square text-success"></i>
+									<!-- </a> -->
+								</div>
+							</div>
+							<!-- <a href="{% url 'detailed' note.unique_identity %}"> -->
+								<i class="card-text">{{note.tag.tag1}} {{note.tag.tag2}} {{note.tag.tag3}}</i>
+							<!-- </a> -->
+						</div>
+						<div class="card-footer has-text-primary">
+							<small class="is-responsive user-select-all">
+								created - {{note.created | date:"d, M"}}
+							</small>
+							<small class="is-responsive">
+								updated - {{note.updated | timesince}}
+							</small>
+						</div>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

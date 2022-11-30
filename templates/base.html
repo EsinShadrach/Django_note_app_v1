@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>NoteApp</title>
+		<link rel="stylesheet" href="{% static 'hybrid_framework/css/bulma.css' %}" />
+		<link rel="stylesheet" href="{% static 'hybrid_framework/css/bootstrap.css' %}" />
+		<link rel="stylesheet" href="{% static 'hybrid_framework/css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'icons/bootstrap-icons.css' %}">
+		<script defer src="{% static 'hybrid_framework/js/bootstrap.bundle.js' %}"></script>
+        <script defer src="{% static 'hybrid_framework/js/app.js' %}"></script>
+	</head>
+	<body class="body">
+		<header class="p-4 has-text-weight-bold has-text-primary has-background-primary-light border-bottom">
+			<a href="{% url 'home' %}" class="container-md display-6">
+				<i>
+					Note!!!
+				</i>
+            </a>
+			<div>
+				<form action="{% url 'home' %}" method="GET">
+					<div class="search-container">
+					  <input type="text" class="input is-primary search" name="search" id="search" aria-describedby="helpId" placeholder="search..">
+					  <button class="button rounded-end is-primary search-btn" type="submit">
+						<i class="bi-search has-text-dark"></i>
+					  </button>
+					</div>
+				</form>
+			</div>
+		</header>
+        <main class="container-md px-4 my-5">
+            {% if identity != 'create' and identity != 'delete' %}
+                <a class="has-background-primary rounded-5 additem px-3 py-2" href="{% url 'create' %}">
+                    <span>
+                        <i class="bi-plus-circle-fill text-white p-1"></i>
+                    </span>
+                    <span class="has-text-primary-light has-text-weight-bold">
+                        Add a note
+                    </span>
+                </a>
+            {% endif %}
+            {% block content %}
+            
+            {% endblock content %}
+        </main>
+    </body>
+</html>

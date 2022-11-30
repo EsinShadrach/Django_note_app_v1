@@ -1,0 +1,97 @@
+* {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+}
+html,
+body {
+	background-color: whitesmoke;
+	display: flex !important;
+	justify-content: center !important;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	align-items: center;
+}
+
+.search-container {
+	display: flex;
+}
+
+.search {
+	border-bottom-right-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+
+.search-btn {
+	border-bottom-left-radius: 0 !important;
+	border-top-left-radius: 0 !important;
+}
+
+.col-md-4 {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	transition: 0.3s all linear;
+}
+
+.card:hover {
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.card-footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.body {
+	background: whitesmoke;
+}
+
+.card-body-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-text,
+.card-footer {
+	user-select: none;
+}
+
+.circular {
+	clip-path: circle();
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+.for-icons {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	align-items: center;
+}
+
+.additem {
+	width: fit-content;
+}
+
+.delete-item {
+	display: flex !important;
+	justify-content: space-between;
+}
+
+.tag-row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
